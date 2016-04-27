@@ -1,0 +1,18 @@
+CREATE DATABASE decodemtl_addressbook;
+USE decodemtl_addressbook;
+CREATE TABLE Account (id INT primary key auto_increment, email VARCHAR(255), password VARCHAR(40), createdOn DATETIME, modifiedOn DATETIME);
+
+CREATE TABLE AddressBook (id INT primary key auto_increment, accountId INT, name VARCHAR(255), createdOn DATETIME, modifiedOn DATETIME);
+ALTER TABLE AddressBook ADD FOREIGN KEY (accountId) REFERENCES Account (id);
+
+CREATE TABLE Entry (id INT primary key auto_increment, addressBookId INT, firstName VARCHAR(255), lastName VARCHAR(255), birthday DATETIME, type ENUM('phone', 'address', 'electronic-mail'));
+ALTER TABLE Entry ADD FOREIGN KEY (addressBookId) REFERENCES AddressBook (id);
+
+CREATE TABLE Phone (id INT primary key auto_increment, entryId INT, type ENUM('home', 'work', 'other'), subtype ENUM('landline', 'cellular', 'fax'), content VARCHAR(255));
+ALTER TABLE Phone ADD FOREIGN KEY (entryId) REFERENCES Entry (id);
+
+CREATE TABLE Address (id INT primary key auto_increment, entryId INT, type ENUM('home', 'work', 'other'), addressLine1 VARCHAR(255), addressLine2 VARCHAR(255), city VARCHAR(255), province VARCHAR(128), country VARCHAR(128), postalCode VARCHAR(10));
+ALTER TABLE Address ADD FOREIGN KEY (entryId) REFERENCES Entry (id);
+
+CREATE TABLE ElectronicMail (id INT primary key auto_increment, entryId INT, type ENUM('home', 'work', 'other'), content VARCHAR(255));
+ALTER TABLE ElectronicMail ADD FOREIGN KEY (entryId) REFERENCES Entry (id);
