@@ -1,0 +1,77 @@
+List all of the first names for ```AddressBook.name="Pharetra Ut Limited"```
+The first and last letters should be capitalized
+
+SELECT concat (upper(left(firstName, 1)), lower(substring(firstName,2,length(firstName)-2)), upper(substring(firstName, length(firstName)))) AS firstName from Entry where AddressBookId=10;
+
++-------------+
+| firstName   |
++-------------+
+| ZeleniA     |
+| AbduL       |
+| IdolA       |
+| IllanA      |
+| WinifreD    |
+| BuckminsteR |
+| HeidI       |
+| NelL        |
+| CiarA       |
+| SylviA      |
+| CaryN       |
+| DieteR      |
+| JamaliA     |
+| HerroD      |
+| UnitY       |
+| PascalE     |
+| ColtoN      |
+| JamaL       |
+| AbeL        |
+| ZenA        |
+| PrescotT    |
+| IdonA       |
+| PalomA      |
+| NevE        |
+| KylA        |
+| KimberleY   |
+| JilliaN     |
+| AddisoN     |
+| JacquelinE  |
+| SashA       |
+| LeE         |
+| SalvadoR    |
+| YokO        |
+| StacY       |
+| HaleE       |
+| BlythE      |
+| TaD         |
+| HaleY       |
+| LarA        |
+| SummeR      |
+| LatifaH     |
+| FaitH       |
+| StaceY      |
+| JennifeR    |
+| FultoN      |
+| ColiN       |
+| ThanE       |
+| CaryN       |
+| BO          |
+| JamaL       |
+| AmenA       |
+| MelaniE     |
+| DriscolL    |
+| GaretH      |
+| ColT        |
+| MarthA      |
+| SierrA      |
+| NitA        |
+| CelestE     |
+| KathleeN    |
+| SamueL      |
+| AaroN       |
+| CheyennE    |
+| BretT       |
+| RebekaH     |
++-------------+
+
+Using JOIN:
+SELECT *, concat (upper(left(firstName, 1)), lower(substring(firstName,2,length(firstName)-2)), upper(substring(firstName, length(firstName)))) AS firstName FROM Entry e JOIN AddressBook a ON e.addressBookId = a.id AND a.name = "Pharetra Ut Limited";
