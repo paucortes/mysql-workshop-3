@@ -1,0 +1,3 @@
+List all possible domain name values for 'ElectronicMail' (email@```domain.name```)
+
+SELECT DISTINCT SUBSTRING(content FROM LOCATE("@", content)+1) FROM ElectronicMail ORDER BY SUBSTRING(content FROM LOCATE("@", content)+1);
