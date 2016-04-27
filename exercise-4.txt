@@ -74,4 +74,4 @@ SELECT concat (upper(left(firstName, 1)), lower(substring(firstName,2,length(fir
 +-------------+
 
 Using JOIN:
-SELECT *, concat (upper(left(firstName, 1)), lower(substring(firstName,2,length(firstName)-2)), upper(substring(firstName, length(firstName)))) AS firstName FROM Entry e JOIN AddressBook a ON e.addressBookId = a.id AND a.name = "Pharetra Ut Limited";
+SELECT concat (upper(left(firstName, 1)), lower(substring(firstName,2,length(firstName)-2)), upper(substring(firstName, length(firstName)))) AS firstName FROM Entry e JOIN AddressBook a ON e.addressBookId = a.id AND a.name = "Pharetra Ut Limited";
